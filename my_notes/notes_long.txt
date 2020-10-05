@@ -1,0 +1,4 @@
+> "this entire application is just a single page, with JavaScript used to control the user interface. Let’s now take a closer look at the distribution code to see how that works."
+
+> "In fact, note that we have written all of the Python code for you for this project. You should be able to complete this project by just writing HTML and JavaScript"
+

@@ -8,6 +8,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // By default, load the inbox
   load_mailbox('inbox');
+
+  // Send an email
+  document.querySelector('#compose-form').onsubmit = () => {
+	const recipients = document.querySelector('#compose-recipients').value;
+	const subject = document.querySelector('#compose-subject').value;
+	const body = document.querySelector('#compose-body').value;
+	console.log(recipients)
+	console.log(subject)
+	console.log(body)
+
+	// Stop form from submitting
+	return false;
+	}
 });
 
 function compose_email() {

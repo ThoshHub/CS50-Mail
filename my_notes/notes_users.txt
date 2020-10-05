@@ -1,6 +1,20 @@
 Users:
-	moon@sailor.com
-	moon
-	moon
+	Username:	moon@moon.org
+	Email:	 	moon@moon.org
+	Password:	moon
 
+	Username:	mercury@moon.org
+	Email:	 	mercury@moon.org
+	Password:	mercury
 
+	Username:	mars@moon.org
+	Email:	 	mars@moon.org
+	Password:	mars
+
+	Username:	jupiter@moon.org
+	Email:	 	jupiter@moon.org
+	Password:	jupiter
+
+	Username:	venus@moon.org
+	Email:	 	venus@moon.org
+	Password:	venus

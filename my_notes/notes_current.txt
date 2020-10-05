@@ -1,0 +1,21 @@
+Questions:
+	in the urls.py there is are API routes are these ONLY used for fetch requests? 
+
+There are 4 total urls:
+	one for the index
+		literally everything happens here
+		including all the buttons you see at the top
+			inbox
+			compose
+			sent
+			archived
+	one for the login page
+	one for the logout page
+	one for the register page
+
+TODOs:
+- Create emails using the API
+	 - in inbox.html, I need to grab all fields from the to, subject, body fields
+	 - then I need to create a json from those fields
+	 - then send the json in a post request
+	 	- look at the project documentation for more info 
