@@ -14,14 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
 	const recipients = document.querySelector('#compose-recipients').value;
 	const subject = document.querySelector('#compose-subject').value;
 	const body = document.querySelector('#compose-body').value;
-	console.log(recipients)
-	console.log(subject)
-	console.log(body)
-
+	send_email(recipients, subject, body)
+	console.log("Sending Email:\nRecipients: " + recipients + "\nSubject: \t" + subject + "\nBody: \t\t" + body)
 	// Stop form from submitting
 	return false;
 	}
 });
+
+function send_email(recipients, subject, body){
+	fetch('/emails', {
+		method: 'POST',
+		body: JSON.stringify({
+			recipients: recipients,
+			subject: subject,
+			body: body
+		})
+	  })
+	  .then(response => response.json())
+	  .then(result => {
+		  // Print result
+		  console.log(result);
+	  });
+}
 
 function compose_email() {
 
