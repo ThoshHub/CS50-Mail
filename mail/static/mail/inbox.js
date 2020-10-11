@@ -79,6 +79,7 @@ function get_emails(mailbox){
 		console.log(emails);
 
 		// ... do something else with emails ...
-		
+		// split the JSON and store subject, from, and timestamp into different variables
+		document.querySelector('#subject').innerHTML = 'TEST'
 	});
 }
