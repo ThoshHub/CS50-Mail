@@ -54,11 +54,31 @@ function compose_email() {
 }
 
 function load_mailbox(mailbox) {
-  
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+
+  // the way this works is that it sets the emails view to a block and the compose view to none which hides it
+  // TODO now all we have to do is grab emails using a function and then create html out of that data
+  // and insert it into the page
+  // the emails we grab will be based on which 'mailbox' the user clicked, which is passed into this function
+  // typing "get_emails(inbox)" in the JS console returns the two emails
+  
+  //console.log('Hello World 2');
+  get_emails(mailbox);
+}
+
+function get_emails(mailbox){
+	fetch('/emails/inbox')
+	.then(response => response.json())
+	.then(emails => {
+		// Print emails
+		console.log(emails);
+
+		// ... do something else with emails ...
+		
+	});
 }
