@@ -64,6 +64,7 @@ function load_mailbox(mailbox) {
   // the way this works is that it sets the emails view to a block and the compose view to none which hides it
   // TODO now all we have to do is grab emails using a function and then create html out of that data
   // and insert it into the page
+  // !! 7:14 on UI lecture shows how to do a foreach loop
   // the emails we grab will be based on which 'mailbox' the user clicked, which is passed into this function
   // typing "get_emails(inbox)" in the JS console returns the two emails
   
@@ -77,9 +78,17 @@ function get_emails(mailbox){
 	.then(emails => {
 		// Print emails
 		console.log(emails);
-
+		
 		// ... do something else with emails ...
 		// split the JSON and store subject, from, and timestamp into different variables
-		document.querySelector('#subject').innerHTML = 'TEST'
+
+		emails.forEach(element => {
+			var from = element.sender;
+			var subject = element.subject;
+			var timestamp = element.timestamp;
+			console.log("from: " + from + " subject: " + subject + " timestamp: " + timestamp);
+		});
+
+		// document.querySelector('#subject-line').innerHTML = `<h3>TEST</h3>`
 	});
 }
