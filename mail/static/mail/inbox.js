@@ -89,7 +89,8 @@ function get_emails(mailbox){
 			console.log("from: " + from + " subject: " + subject + " timestamp: " + timestamp);
 			
 			var emails_list = document.getElementById("emails-view");
-			emails_list.innerHTML = emails_list.innerHTML + "<h3>This is the text which has been inserted by JS</h3>"; 
+			const email_listing = "Subject: " + subject + "<br>From: " + from + "<br>Time: " + timestamp
+			emails_list.innerHTML = emails_list.innerHTML + `<h3>${email_listing}</h3><br>`; 
 			// Need to use escape characters or intermediate variables to generate the text for this
 			// Also need to add subdivs and borders to be able to change background color (if read or not) 
 			// Also need some sort of JS to make an email marked read... there might be a post request in the  Django code, look there first also check the mails page documentation, there will probabably be a way to set mails as read...
