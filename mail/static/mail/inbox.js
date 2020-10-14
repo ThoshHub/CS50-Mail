@@ -89,8 +89,8 @@ function get_emails(mailbox){
 			console.log("from: " + from + " subject: " + subject + " timestamp: " + timestamp);
 			
 			var email_listing = "<h4>Subject: " + subject + "</h4>" + "\tFrom: " + from + "<br>Time: " + timestamp
-			email_listing = email_listing + "<p>From: " + from + " Time: " + timestamp + "<p>"  
-			const div_email_class = "class=\"border border-primary\"" 
+			var background = "#FFFFFF"
+			const div_email_class = "class=\"email_border\" style=\"background: " + background + ";\"" 
 			email_listing = "<div " + div_email_class + ">" + email_listing + "</div>"
 			var emails_list = document.getElementById("emails-view");
 			emails_list.innerHTML = emails_list.innerHTML + `${email_listing}`; 
