@@ -86,10 +86,14 @@ function get_emails(mailbox){
 			const from = element.sender;
 			const subject = element.subject;
 			const timestamp = element.timestamp;
+			const read = element.read;
 			console.log("from: " + from + " subject: " + subject + " timestamp: " + timestamp);
 			
-			var email_listing = "<h4>Subject: " + subject + "</h4>" + "\tFrom: " + from + "<br>Time: " + timestamp
-			var background = "#FFFFFF"
+			var email_listing = "<h4>Subject: " + subject + "</h4>" + "From:\t" + from + "<br>Time:\t" + timestamp
+			var background = "#FFFFFF" // default background color is white
+			if(read == true) {
+				var background = "#D3D3D3" // if the email has been read, set it to grey
+			}
 			const div_email_class = "class=\"email_border\" style=\"background: " + background + ";\"" 
 			email_listing = "<div " + div_email_class + ">" + email_listing + "</div>"
 			var emails_list = document.getElementById("emails-view");
