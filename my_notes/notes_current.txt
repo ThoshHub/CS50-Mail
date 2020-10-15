@@ -14,8 +14,15 @@ There are 4 total urls:
 	one for the register page
 
 TODOs:
-- Create emails using the API
-	 - in inbox.html, I need to grab all fields from the to, subject, body fields
-	 - then I need to create a json from those fields
-	 - then send the json in a post request
-	 	- look at the project documentation for more info 
+/- Create emails using the API
+/	 - in inbox.html, I need to grab all fields from the to, subject, body fields
+/	 - then I need to create a json from those fields
+/	 - then send the json in a post request
+/	 	- look at the project documentation for more info 
+
+- Emails are sending as read for some reason
+	- Fix this
+
+- View Email 
+	- Need to add button to inbox page
+		- This button needs to send get request 

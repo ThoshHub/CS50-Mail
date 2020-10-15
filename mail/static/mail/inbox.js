@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // By default, load the inbox
   load_mailbox('inbox');
 
+  document.querySelector(.email_border)
+
   // Send an email
   document.querySelector('#compose-form').onsubmit = () => {
 	const recipients = document.querySelector('#compose-recipients').value;
@@ -83,28 +85,32 @@ function get_emails(mailbox){
 		// split the JSON and store subject, from, and timestamp into different variables
 		
 		emails.forEach(element => {
-			const from = element.sender;
-			const subject = element.subject;
-			const timestamp = element.timestamp;
-			const read = element.read;
-			console.log("from: " + from + " subject: " + subject + " timestamp: " + timestamp);
-			
-			var email_listing = "<h4>Subject: " + subject + "</h4>" + "From:\t" + from + "<br>Time:\t" + timestamp
-			var background = "#FFFFFF" // default background color is white
-			if(read == true) {
-				var background = "#D3D3D3" // if the email has been read, set it to grey
-			}
-			const div_email_class = "class=\"email_border\" style=\"background: " + background + ";\"" 
-			email_listing = "<div " + div_email_class + ">" + email_listing + "</div>"
-			var emails_list = document.getElementById("emails-view");
-			emails_list.innerHTML = emails_list.innerHTML + `${email_listing}`; 
-			// Need to use escape characters or intermediate variables to generate the text for this
-			// Also need to add subdivs and borders to be able to change background color (if read or not) 
-			// Also need some sort of JS to make an email marked read... there might be a post request in the  Django code, look there first also check the mails page documentation, there will probabably be a way to set mails as read...
-			
-			//document.querySelector('#emails-view').innerHTML = <h3>${"from: " + from + " subject: " + subject + " timestamp: " + timestamp}</h3>
+			create_email_listing(element)
 		});
 
 		
 	});
+}
+
+function create_email_listing(element) {
+	const from = element.sender;
+	const subject = element.subject;
+	const timestamp = element.timestamp;
+	const read = element.read;
+	console.log("from: " + from + " subject: " + subject + " timestamp: " + timestamp);
+
+	var email_listing = "<h4>Subject: " + subject + "</h4>" + "From:\t" + from + "<br>Time:\t" + timestamp
+	var background = "#FFFFFF" // default background color is white
+	if(read == true) {
+		var background = "#D3D3D3" // if the email has been read, set it to grey
+	}
+	const div_email_class = "class=\"email_border\" style=\"background: " + background + ";\"" 
+	email_listing = "<div " + div_email_class + ">" + email_listing + "</div>"
+	var emails_list = document.getElementById("emails-view");
+	emails_list.innerHTML = emails_list.innerHTML + `${email_listing}`; 
+	// Need to use escape characters or intermediate variables to generate the text for this
+	// Also need to add subdivs and borders to be able to change background color (if read or not) 
+	// Also need some sort of JS to make an email marked read... there might be a post request in the  Django code, look there first also check the mails page documentation, there will probabably be a way to set mails as read...
+
+	//document.querySelector('#emails-view').innerHTML = <h3>${"from: " + from + " subject: " + subject + " timestamp: " + timestamp}</h3>
 }
