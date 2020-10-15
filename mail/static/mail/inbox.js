@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // By default, load the inbox
   load_mailbox('inbox');
 
+//   // NOT USED, CAN DELETE (UNLESS YOU WANT TO USE IT LATER)
+//   document.addEventListener('click', event => {
+// 	  const element = event.target;
+// 	  console.log("Something was clicked")
+// 	  // 45:36 for an on click event
+//   })
+
   // Send an email
   document.querySelector('#compose-form').onsubmit = () => {
 	const recipients = document.querySelector('#compose-recipients').value;
@@ -112,6 +119,29 @@ function create_email_listing(element) {
 	// TODO make onclick that collapses everything and adds new html section to display contents of email
 	// You CANNOT redirect to a new url because currently the view for index, login and register return an html page
 	// so this HAS to be done on the index page
+	post.onclick = function() {
+		// Log what post was clicked
+		// console.log("Post ID " + id + " Clicked!");
+		
+		// Call the function to Display the Email
+		display_email(id)
+	};
+}
+
+// This function hides everything else on the screen and displays the contents of a single email
+function display_email(email_id){
+	// Log that this function was clicked
+	console.log("Getting The Email For: " + email_id)
+
+	// Make a fetch request to get the email log it
+	fetch('/emails/' + email_id)
+	.then(response => response.json())
+	.then(email => {
+		// Print email
+		console.log(email);
+
+		// ... do something else with email ...
+	});
 }
 
 // old create_email_listing method 
