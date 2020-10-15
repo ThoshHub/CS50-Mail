@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // By default, load the inbox
   load_mailbox('inbox');
 
-  document.querySelector(.email_border)
-
   // Send an email
   document.querySelector('#compose-form').onsubmit = () => {
 	const recipients = document.querySelector('#compose-recipients').value;
@@ -55,6 +53,7 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
+// This function loads the mailbox and then calls the get_emails to get the content of the mailbox
 function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
@@ -63,17 +62,12 @@ function load_mailbox(mailbox) {
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 
-  // the way this works is that it sets the emails view to a block and the compose view to none which hides it
-  // TODO now all we have to do is grab emails using a function and then create html out of that data
-  // and insert it into the page
-  // !! 7:14 on UI lecture shows how to do a foreach loop
-  // the emails we grab will be based on which 'mailbox' the user clicked, which is passed into this function
-  // typing "get_emails(inbox)" in the JS console returns the two emails
-  
-  //console.log('Hello World 2');
+  // requests the emails of the mailbox
   get_emails(mailbox);
 }
 
+// requests the emails of the mailbox
+// for each email recieved, will call create_email_listing on it to generate an email on the page
 function get_emails(mailbox){
 	fetch('/emails/inbox')
 	.then(response => response.json())
@@ -82,17 +76,46 @@ function get_emails(mailbox){
 		console.log(emails);
 		
 		// ... do something else with emails ...
-		// split the JSON and store subject, from, and timestamp into different variables
-		
 		emails.forEach(element => {
 			create_email_listing(element)
 		});
-
-		
 	});
 }
 
 function create_email_listing(element) {
+	// Get details of the email
+	const from = element.sender;
+	const subject = element.subject;
+	const timestamp = element.timestamp;
+	const read = element.read;
+	const id = element.id;
+	var background = "#FFFFFF" // default background color is white
+	if(read == true) {
+		var background = "#D3D3D3" // if the email has been read, set it to grey
+	}
+
+	// Create a new div for the email
+	const post = document.createElement('div')
+	post.id = "email_" + element.id // give each email a new id
+
+	const html_str = "<h4>Subject: " + subject + "</h4>" + "From:\t" + from + "<br>Time:\t" + timestamp
+	post.innerHTML = `${html_str}`
+	document.querySelector('#emails-view').append(post);
+
+	// Set styles
+	document.getElementById(post.id).style.border = "2px solid dodgerblue";
+	document.getElementById(post.id).style.borderRadius = "15px";
+	document.getElementById(post.id).style.padding = "10px"
+	document.getElementById(post.id).style.marginBottom = "10px"
+	document.getElementById(post.id).style.background = background
+
+	// TODO make onclick that collapses everything and adds new html section to display contents of email
+	// You CANNOT redirect to a new url because currently the view for index, login and register return an html page
+	// so this HAS to be done on the index page
+}
+
+// old create_email_listing method 
+function create_email_listing_201014091135(element) {
 	const from = element.sender;
 	const subject = element.subject;
 	const timestamp = element.timestamp;
