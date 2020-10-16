@@ -53,6 +53,7 @@ function compose_email() {
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
+  document.querySelector('#email-message').style.display = 'none';
 
   // Clear out composition fields
   document.querySelector('#compose-recipients').value = '';
@@ -65,6 +66,7 @@ function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#email-message').style.display = 'none';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
@@ -140,7 +142,15 @@ function display_email(email_id){
 		// Print email
 		console.log(email);
 
-		// ... do something else with email ...
+		// Show the email message and hide other views
+		document.querySelector('#emails-view').style.display = 'none';
+		document.querySelector('#compose-view').style.display = 'none';
+		document.querySelector('#email-message').style.display = 'block';
+
+		// set the inner div of email-message to the contents of the email that has been returned
+		// need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
+		var current_email_message = "<h4> You clicked on email: " + email_id + "</h4>"
+		document.querySelector('#email-message').innerHTML = `${current_email_message}`
 	});
 }
 
