@@ -157,7 +157,7 @@ function display_email(email_id){
 		// need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
 		var current_email_message = "<h4>Subject: " + subject + "</h4>"
 		current_email_message = current_email_message + "<h6>From: " + from + "</h6>"
-		current_email_message = current_email_message + "<h6>Time: " + timestamp + "</h6>"
+		current_email_message = current_email_message + "<h6 id=\"time_line\">Time: " + timestamp + "</h6>"
 		current_email_message = current_email_message + "<h6>Message: " + "</h6>"
 		current_email_message = current_email_message + "<p>" + message + "</p>"
 		document.querySelector('#email-message').innerHTML = `${current_email_message}`
