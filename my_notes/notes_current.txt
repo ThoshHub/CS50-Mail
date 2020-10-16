@@ -30,6 +30,11 @@ TODOs:
 /	- So login as some other user and send an email to moon and login as moon and see if it affects you
 		- Turns out this was it, sending from mars to moon creates an unread email in moon's inbox
 
+- Reply to emails
+	- create a copy of "compose_email()" function that is autopopulated with
+		- Re: + subject line EXCEPT when the subject begins with "Re: "!!
+		- sender as recipient 
+
 - Need to figure a way to get emails for the specific inboxes
 	- I think what I need to do is when the user clicks a button, run the exact same code I am using for the inbox 
 	- but instead use an if statement to filter if the json data that is returned (in the foreach loop)
@@ -40,9 +45,15 @@ TODOs:
 		- filter so that archived emails do not show up
 	
 	- Sent 
-		- not sure how I'm going to do this, I have to get emails where the user is the recipient first
-		- after that it's easy
+		- not sure how I'm going to do this, I have to get emails where the user is the recipient FIRST
+		- after that it's easy, just have to display them like all others
 
-- Need to add a button to reply 
+	- Archived
+		- basically the opposite of the inbox where it only displays emails with archived flag
 
-- Need to add a button to archive
+- View Email View
+	- If archived, there needs to be an unarchive button ONLY
+	- If sent, make sure no buttons
+	- If unarchived, then make sure there is a reply button AND and an archive button
+		- Need to add a button to reply 
+		- Need to add a button to archive
