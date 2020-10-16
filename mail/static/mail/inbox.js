@@ -147,9 +147,19 @@ function display_email(email_id){
 		document.querySelector('#compose-view').style.display = 'none';
 		document.querySelector('#email-message').style.display = 'block';
 
+		// Get the sender, subject, and time that email was sent
+		const from = email.sender;
+		const subject = email.subject;
+		const timestamp = email.timestamp;
+		const message = email.body;
+
 		// set the inner div of email-message to the contents of the email that has been returned
 		// need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
-		var current_email_message = "<h4> You clicked on email: " + email_id + "</h4>"
+		var current_email_message = "<h4>Subject: " + subject + "</h4>"
+		current_email_message = current_email_message + "<h6>From: " + from + "</h6>"
+		current_email_message = current_email_message + "<h6>Time: " + timestamp + "</h6>"
+		current_email_message = current_email_message + "<h6>Message: " + "</h6>"
+		current_email_message = current_email_message + "<p>" + message + "</p>"
 		document.querySelector('#email-message').innerHTML = `${current_email_message}`
 	});
 }
