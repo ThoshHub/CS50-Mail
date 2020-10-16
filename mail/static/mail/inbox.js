@@ -154,13 +154,20 @@ function display_email(email_id){
 		const message = email.body;
 
 		// set the inner div of email-message to the contents of the email that has been returned
-		// need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
+		
+		// TODO need to loop through all recipients (is an array), create a string from it and then add it to the display
+		// TODO need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
 		var current_email_message = "<h4>Subject: " + subject + "</h4>"
 		current_email_message = current_email_message + "<h6>From: " + from + "</h6>"
 		current_email_message = current_email_message + "<h6 id=\"time_line\">Time: " + timestamp + "</h6>"
 		current_email_message = current_email_message + "<h6>Message: " + "</h6>"
 		current_email_message = current_email_message + "<p>" + message + "</p>"
 		document.querySelector('#email-message').innerHTML = `${current_email_message}`
+
+		// TODO after you make the button you can just pass in the value of the sender etc into the "compose_email()" function
+		// then just edit that to take in the variables as arguments
+		// Since its already called as it is you can just edit it to check whether the vars passed in are empty or not and set those fields accordinly
+		// OR you can create a whole new method that is identical but with a different name, edit it accordingly and call that function
 	});
 }
 
