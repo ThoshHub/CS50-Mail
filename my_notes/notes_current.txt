@@ -20,9 +20,29 @@ TODOs:
 /	 - then send the json in a post request
 /	 	- look at the project documentation for more info 
 
-- Emails are sending as read for some reason
-	- Fix this
+/- View Email 
+/	- Need to add button to inbox page
+/		- This button needs to send get request 
 
-- View Email 
-	- Need to add button to inbox page
-		- This button needs to send get request 
+/- Emails are sending as read for some reason
+/	- Fix this
+/	- Might also need to check if this actually happens because this showed up when I sent to the same email I was sending to
+/	- So login as some other user and send an email to moon and login as moon and see if it affects you
+		- Turns out this was it, sending from mars to moon creates an unread email in moon's inbox
+
+- Need to figure a way to get emails for the specific inboxes
+	- I think what I need to do is when the user clicks a button, run the exact same code I am using for the inbox 
+	- but instead use an if statement to filter if the json data that is returned (in the foreach loop)
+	- Ones that don't meet criteria (checked through an if statement) do not get displayed
+	- I need to do this for the main inbox as well
+
+	- Inbox
+		- filter so that archived emails do not show up
+	
+	- Sent 
+		- not sure how I'm going to do this, I have to get emails where the user is the recipient first
+		- after that it's easy
+
+- Need to add a button to reply 
+
+- Need to add a button to archive
