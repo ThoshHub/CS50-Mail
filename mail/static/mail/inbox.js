@@ -169,11 +169,13 @@ function display_email(email_id){
 		current_email_message = current_email_message + "<p>" + message + "</p>"
 		document.querySelector('#email-message').innerHTML = `${current_email_message}`
 
+		button = "<button></button>" // what should to button action be?
 		// TODO need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
 		// TODO after you make the button you can just pass in the value of the sender etc into the "compose_email()" function
 		// then just edit that to take in the variables as arguments
-		// Since its already called as it is you can just edit it to check whether the vars passed in are empty or not and set those fields accordinly
+		// Since its already called as it is you can just edit it to check whether the vars passed in are empty or not and set those fields accordingly
 		// OR you can create a whole new method that is identical but with a different name, edit it accordingly and call that function
+		// second option seems easier maybe
 	});
 }
 
