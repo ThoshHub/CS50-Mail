@@ -184,26 +184,34 @@ function display_email(email_id){
 		
 		// Create an event listener for the reply button
 		reply_button.addEventListener ("click", function() {
-			console.log("You clicked the reply button!"); // for debugging
-			// compose_email()
+			// console.log("You clicked the reply button!"); // for debugging
+			// compose_reply_email(from, subject, message, timestamp)
+
+			// Add "re:" in front of subject if it doesn't belong with Re:
+			var reply_subject = ""
+			if(subject.startsWith("Re: ")){
+				reply_subject = subject;
+			} else {
+				reply_subject = "Re: " + subject
+			}
+
+			// Add timestamp to body
+			var reply_body = "" + body
+
 		  });
-		// TODO need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
-		// For this button use search "USE THIS FOR REPLY" at the top and look at 44:46 of UI lecture to get how this will work
-		// TODO after you make the button you can just pass in the value of the sender etc into the "compose_email()" function
-		// then just edit that to take in the variables as arguments
-		// Since its already called as it is you can just edit it to check whether the vars passed in are empty or not and set those fields accordingly
-		// OR you can create a whole new method that is identical but with a different name, edit it accordingly and call that function
-		// second option seems easier maybe
+		// TODO for this event listener pass in recipients, subject, body
 	});
 }
 
-function compose__reply_email(recipients, subject, body) {
+function compose_reply_email(recipients, subject, message, timestamp) {
 
 	// Show compose view and hide other views
 	document.querySelector('#emails-view').style.display = 'none';
 	document.querySelector('#compose-view').style.display = 'block';
 	document.querySelector('#email-message').style.display = 'none';
   
+	/* INSERT HERE */
+
 	// Clear out composition fields
 	document.querySelector('#compose-recipients').value = '';
 	document.querySelector('#compose-subject').value = '';
