@@ -185,37 +185,34 @@ function display_email(email_id){
 		// Create an event listener for the reply button
 		reply_button.addEventListener ("click", function() {
 			// console.log("You clicked the reply button!"); // for debugging
-			// compose_reply_email(from, subject, message, timestamp)
-
-			// Add "re:" in front of subject if it doesn't belong with Re:
-			var reply_subject = ""
-			if(subject.startsWith("Re: ")){
-				reply_subject = subject;
-			} else {
-				reply_subject = "Re: " + subject
-			}
-
-			// Add timestamp to body
-			var reply_body = "" + body
-
+			compose_reply_email(from, subject, message, timestamp)
 		  });
 		// TODO for this event listener pass in recipients, subject, body
 	});
 }
 
-function compose_reply_email(recipients, subject, message, timestamp) {
+function compose_reply_email(from, subject, message, timestamp) {
 
 	// Show compose view and hide other views
 	document.querySelector('#emails-view').style.display = 'none';
 	document.querySelector('#compose-view').style.display = 'block';
 	document.querySelector('#email-message').style.display = 'none';
   
-	/* INSERT HERE */
+	// Add "re:" in front of subject if it doesn't belong with Re:
+	var reply_subject = ""
+	if(subject.startsWith("Re: ")){
+		reply_subject = subject;
+	} else {
+		reply_subject = "Re: " + subject
+	}
+	
+	// Create previous message
+	const reply_body = "\n\nOn " + timestamp + " " + from + " wrote: \n" + message
 
 	// Clear out composition fields
-	document.querySelector('#compose-recipients').value = '';
-	document.querySelector('#compose-subject').value = '';
-	document.querySelector('#compose-body').value = '';
+	document.querySelector('#compose-recipients').value = from;
+	document.querySelector('#compose-subject').value = reply_subject;
+	document.querySelector('#compose-body').value = reply_body;
   }
 
 // old create_email_listing method 
