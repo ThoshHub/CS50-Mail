@@ -147,6 +147,9 @@ function display_email(email_id){
 		document.querySelector('#compose-view').style.display = 'none';
 		document.querySelector('#email-message').style.display = 'block';
 
+		// Grab the email-message div and store it in a variable
+		var email_body = document.querySelector("#email-message"); 
+
 		// Get the sender, subject, and time that email was sent
 		const from = email.sender;
 		const subject = email.subject;
@@ -160,6 +163,12 @@ function display_email(email_id){
 		});
 		recipients.replace(/[ ]+/g, ", "); // Replace all spaces with a comma and a space for readability
 
+		// Create a reply button
+		var reply_button = document.createElement("button"); // create
+		reply_button.innerHTML = "Reply"; // set label
+		reply_button.className = "btn btn-primary"; // for bootstrap CSS
+		reply_button.id = "reply_button"; // give it an id in case I want to do something with it in the future
+
 		// Set the inner div of email-message to the contents of the email that has been returned
 		var current_email_message = "<h4>Subject: " + subject + "</h4>";
 		current_email_message = current_email_message + "<h6>From: <span id=\"from_line\">" + from + "</span></h6>";
@@ -167,17 +176,13 @@ function display_email(email_id){
 		current_email_message = current_email_message + "<h6 id=\"time_line\">Time: " + timestamp + "</h6>";
 		current_email_message = current_email_message + "<h6>Message: " + "</h6>";
 		current_email_message = current_email_message + "<p>" + message + "</p>";
-		// current_email_message = current_email_message + "<button id=\"reply_button\" class=\"btn btn-primary\">Reply</button>" // what should to button action be?
+		// current_email_message = current_email_message + "<button id=\"reply_button\" class=\"btn btn-primary\">Reply</button>" // Vestigial code
 		document.querySelector('#email-message').innerHTML = `${current_email_message}`; // set inner html
 		
-		var reply_button = document.createElement("button"); // create reply button
-		reply_button.innerHTML = "Reply"; // set label
-		reply_button.className = "btn btn-primary"; // for bootstrap CSS
-		reply_button.id = "reply_button"; // give it an id in case I want to do something with it in the future
-
-		var email_body = document.querySelector("#email-message"); // grab the email_body and store it in a avariable
+		// Append the button
 		email_body.appendChild(reply_button); // append the button
-
+		
+		// Create an event listener for the reply button
 		reply_button.addEventListener ("click", function() {
 			alert("You clicked the reply button!"); // for debugging
 		  });
