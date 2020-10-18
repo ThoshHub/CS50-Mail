@@ -184,7 +184,8 @@ function display_email(email_id){
 		
 		// Create an event listener for the reply button
 		reply_button.addEventListener ("click", function() {
-			alert("You clicked the reply button!"); // for debugging
+			console.log("You clicked the reply button!"); // for debugging
+			// compose_email()
 		  });
 		// TODO need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
 		// For this button use search "USE THIS FOR REPLY" at the top and look at 44:46 of UI lecture to get how this will work
@@ -195,6 +196,19 @@ function display_email(email_id){
 		// second option seems easier maybe
 	});
 }
+
+function compose__reply_email(recipients, subject, body) {
+
+	// Show compose view and hide other views
+	document.querySelector('#emails-view').style.display = 'none';
+	document.querySelector('#compose-view').style.display = 'block';
+	document.querySelector('#email-message').style.display = 'none';
+  
+	// Clear out composition fields
+	document.querySelector('#compose-recipients').value = '';
+	document.querySelector('#compose-subject').value = '';
+	document.querySelector('#compose-body').value = '';
+  }
 
 // old create_email_listing method 
 function create_email_listing_201014091135(element) {
