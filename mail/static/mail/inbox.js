@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // By default, load the inbox
   load_mailbox('inbox');
 
-//   // NOT USED, CAN DELETE (UNLESS YOU WANT TO USE IT LATER)
+//   // USE THIS FOR REPLY // OR DON'T
 //   document.addEventListener('click', event => {
 // 	  const element = event.target;
 // 	  console.log("Something was clicked")
@@ -154,23 +154,35 @@ function display_email(email_id){
 		const message = email.body;
 
 		// Loop through all recipients (is an array), create a string from it and then add it to the display
-		var recipients = ""
+		var recipients = "";
 		email.recipients.forEach(element => {
-			recipients = recipients + " " + element
-		})
-		recipients.replace(/[ ]+/g, ", ") // Replace all spaces with a comma and a space for readability
+			recipients = recipients + " " + element;
+		});
+		recipients.replace(/[ ]+/g, ", "); // Replace all spaces with a comma and a space for readability
 
 		// Set the inner div of email-message to the contents of the email that has been returned
-		var current_email_message = "<h4>Subject: " + subject + "</h4>"
-		current_email_message = current_email_message + "<h6>From: <span id=\"from_line\">" + from + "</span></h6>"
-		current_email_message = current_email_message + "<h6>To: <span id=\"to_line\">" + recipients + "</span></h6>"
-		current_email_message = current_email_message + "<h6 id=\"time_line\">Time: " + timestamp + "</h6>"
-		current_email_message = current_email_message + "<h6>Message: " + "</h6>"
-		current_email_message = current_email_message + "<p>" + message + "</p>"
-		document.querySelector('#email-message').innerHTML = `${current_email_message}`
+		var current_email_message = "<h4>Subject: " + subject + "</h4>";
+		current_email_message = current_email_message + "<h6>From: <span id=\"from_line\">" + from + "</span></h6>";
+		current_email_message = current_email_message + "<h6>To: <span id=\"to_line\">" + recipients + "</span></h6>";
+		current_email_message = current_email_message + "<h6 id=\"time_line\">Time: " + timestamp + "</h6>";
+		current_email_message = current_email_message + "<h6>Message: " + "</h6>";
+		current_email_message = current_email_message + "<p>" + message + "</p>";
+		// current_email_message = current_email_message + "<button id=\"reply_button\" class=\"btn btn-primary\">Reply</button>" // what should to button action be?
+		document.querySelector('#email-message').innerHTML = `${current_email_message}`; // set inner html
+		
+		var reply_button = document.createElement("button"); // create reply button
+		reply_button.innerHTML = "Reply"; // set label
+		reply_button.className = "btn btn-primary"; // for bootstrap CSS
+		reply_button.id = "reply_button"; // give it an id in case I want to do something with it in the future
 
-		button = "<button></button>" // what should to button action be?
+		var email_body = document.querySelector("#email-message"); // grab the email_body and store it in a avariable
+		email_body.appendChild(reply_button); // append the button
+
+		reply_button.addEventListener ("click", function() {
+			alert("You clicked the reply button!"); // for debugging
+		  });
 		// TODO need to add button to reply to the email which will take you to the create message form BUT with fields autopopulated (I think)
+		// For this button use search "USE THIS FOR REPLY" at the top and look at 44:46 of UI lecture to get how this will work
 		// TODO after you make the button you can just pass in the value of the sender etc into the "compose_email()" function
 		// then just edit that to take in the variables as arguments
 		// Since its already called as it is you can just edit it to check whether the vars passed in are empty or not and set those fields accordingly
