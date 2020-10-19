@@ -80,7 +80,7 @@ function load_mailbox(mailbox) {
 // requests the emails of the mailbox
 // for each email recieved, will call create_email_listing on it to generate an email on the page
 function get_emails(mailbox){
-	fetch('/emails/inbox')
+	fetch('/emails/' + mailbox)
 	.then(response => response.json())
 	.then(emails => {
 		// Print emails
@@ -88,12 +88,6 @@ function get_emails(mailbox){
 		
 		// ... do something else with emails ...
 		emails.forEach(element => {
-			/* TODO an if/else statement here 
-			the if will check the "mailbox variable passed in"
-			depending on the mailbox passed in, it will check each
-			"element" for characteristics for that mailbox
-			The mailboxes are: "inbox", "archive", "sent"
-			*/
 			console.log(mailbox)
 			create_email_listing(element)
 		});
