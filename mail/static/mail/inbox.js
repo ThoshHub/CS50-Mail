@@ -127,16 +127,29 @@ function create_email_listing(element) {
 	post.onclick = function() {
 		// Log what post was clicked
 		// console.log("Post ID " + id + " Clicked!");
-		
+
 		// Call the function to Display the Email
 		display_email(id)
 	};
 }
 
+function mark_email_read(email_id){
+	// Set the email as read
+	fetch('/emails/' + email_id, {
+		method: 'PUT',
+		body: JSON.stringify({
+			read: true
+		})
+	})
+	console.log("Marked Email " + email_id + " As Read")
+}
 // This function hides everything else on the screen and displays the contents of a single email
 function display_email(email_id){
 	// Log that this function was clicked
 	console.log("Getting The Email For: " + email_id)
+
+	// Mark the email as read
+	mark_email_read(email_id)
 
 	// Make a fetch request to get the email log it
 	fetch('/emails/' + email_id)

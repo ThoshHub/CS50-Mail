@@ -69,5 +69,4 @@ TODOs:
 		- Need to add a button to reply 
 		- Need to add a button to archive
 
-- Need to make sure that once emails are read in the inbox, that they get marked as read
-	- 
+/- Need to make sure that once emails are read in the inbox, that they get marked as read
