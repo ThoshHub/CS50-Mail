@@ -35,25 +35,39 @@ TODOs:
 /		- Re: + subject line EXCEPT when the subject begins with "Re: "!!
 /		- sender as recipient 
 
-- Need to figure a way to get emails for the specific inboxes
-	- I think what I need to do is when the user clicks a button, run the exact same code I am using for the inbox 
-	- but instead use an if statement to filter if the json data that is returned (in the foreach loop)
-	- Ones that don't meet criteria (checked through an if statement) do not get displayed
-	- I need to do this for the main inbox as well
+/- Need to figure a way to get emails for the specific inboxes
+/	- I think what I need to do is when the user clicks a button, run the exact same code I am using for the inbox 
+/	- but instead use an if statement to filter if the json data that is returned (in the foreach loop)
+/	- Ones that don't meet criteria (checked through an if statement) do not get displayed
+/	- I need to do this for the main inbox as well
 
-	- Inbox
-		- filter so that archived emails do not show up
+/	- Inbox
+/		- filter so that archived emails do not show up
 	
-	- Sent 
-		- not sure how I'm going to do this, I have to get emails where the user is the recipient FIRST
-		- after that it's easy, just have to display them like all others
+/	- Sent 
+/		- not sure how I'm going to do this, I have to get emails where the user is the recipient FIRST
+/		- after that it's easy, just have to display them like all others
 
-	- Archived
-		- basically the opposite of the inbox where it only displays emails with archived flag
+/	- Archived
+/		- basically the opposite of the inbox where it only displays emails with archived flag
 
 - View Email View
 	- If archived, there needs to be an unarchive button ONLY
+		- I think the way to do this is to pass in the mailbox variable
+		- If mailbox == 'inbox' provide archive button
+			- once clicked it sends the post (put?) request to the backend
+			- Button dissapears? (or turns into unarchive button)
+				- Try dissapears first 
+				- If you have enough time then change it to unarchive 
+		- If mailbox == 'archive' provide unarchive button
+			- once clicked it sends the post (put?) request to the backend
+			- Button dissapears? (or turns into archive button)
+				- Try dissapears first 
+				- If you have enough time then change it to archive
 	- If sent, make sure no buttons
 	- If unarchived, then make sure there is a reply button AND and an archive button
 		- Need to add a button to reply 
 		- Need to add a button to archive
+
+- Need to make sure that once emails are read in the inbox, that they get marked as read
+	- 
