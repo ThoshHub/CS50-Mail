@@ -30,10 +30,10 @@ TODOs:
 /	- So login as some other user and send an email to moon and login as moon and see if it affects you
 		- Turns out this was it, sending from mars to moon creates an unread email in moon's inbox
 
-- Reply to emails
-	- create a copy of "compose_email()" function that is autopopulated with
-		- Re: + subject line EXCEPT when the subject begins with "Re: "!!
-		- sender as recipient 
+/- Reply to emails
+/	- create a copy of "compose_email()" function that is autopopulated with
+/		- Re: + subject line EXCEPT when the subject begins with "Re: "!!
+/		- sender as recipient 
 
 - Need to figure a way to get emails for the specific inboxes
 	- I think what I need to do is when the user clicks a button, run the exact same code I am using for the inbox 

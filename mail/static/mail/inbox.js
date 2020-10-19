@@ -73,6 +73,8 @@ function load_mailbox(mailbox) {
 
   // requests the emails of the mailbox
   get_emails(mailbox);
+  // TODO edit this to filter it based on the mailbox!
+  // in the get_emails() function, you need to filter out elements based on if they are (archived, sent, etc) depending on the mailbox "variable" that is passed in
 }
 
 // requests the emails of the mailbox
@@ -86,6 +88,13 @@ function get_emails(mailbox){
 		
 		// ... do something else with emails ...
 		emails.forEach(element => {
+			/* TODO an if/else statement here 
+			the if will check the "mailbox variable passed in"
+			depending on the mailbox passed in, it will check each
+			"element" for characteristics for that mailbox
+			The mailboxes are: "inbox", "archive", "sent"
+			*/
+			console.log(mailbox)
 			create_email_listing(element)
 		});
 	});
@@ -187,7 +196,6 @@ function display_email(email_id){
 			// console.log("You clicked the reply button!"); // for debugging
 			compose_reply_email(from, subject, message, timestamp)
 		  });
-		// TODO for this event listener pass in recipients, subject, body
 	});
 }
 
