@@ -89,12 +89,12 @@ function get_emails(mailbox){
 		// ... do something else with emails ...
 		emails.forEach(element => {
 			console.log(mailbox)
-			create_email_listing(element)
+			create_email_listing(element, mailbox) // Mailbox is passed in because the individual email view depends on what mailbox the mail is from in display_email()
 		});
 	});
 }
 
-function create_email_listing(element) {
+function create_email_listing(element, mailbox) {
 	// Get details of the email
 	const from = element.sender;
 	const subject = element.subject;
@@ -129,7 +129,7 @@ function create_email_listing(element) {
 		// console.log("Post ID " + id + " Clicked!");
 
 		// Call the function to Display the Email
-		display_email(id)
+		display_email(id, mailbox) // Mailbox is passed in because the individual email view depends on what mailbox the mail is from in display_email()
 	};
 }
 
@@ -144,7 +144,7 @@ function mark_email_read(email_id){
 	console.log("Marked Email " + email_id + " As Read")
 }
 // This function hides everything else on the screen and displays the contents of a single email
-function display_email(email_id){
+function display_email(email_id, mailbox){
 	// Log that this function was clicked
 	console.log("Getting The Email For: " + email_id)
 
@@ -179,12 +179,6 @@ function display_email(email_id){
 		});
 		recipients.replace(/[ ]+/g, ", "); // Replace all spaces with a comma and a space for readability
 
-		// Create a reply button
-		var reply_button = document.createElement("button"); // create
-		reply_button.innerHTML = "Reply"; // set label
-		reply_button.className = "btn btn-primary"; // for bootstrap CSS
-		reply_button.id = "reply_button"; // give it an id in case I want to do something with it in the future
-
 		// Set the inner div of email-message to the contents of the email that has been returned
 		var current_email_message = "<h4>Subject: " + subject + "</h4>";
 		current_email_message = current_email_message + "<h6>From: <span id=\"from_line\">" + from + "</span></h6>";
@@ -193,16 +187,65 @@ function display_email(email_id){
 		current_email_message = current_email_message + "<h6>Message: " + "</h6>";
 		current_email_message = current_email_message + "<p>" + message + "</p>";
 		// current_email_message = current_email_message + "<button id=\"reply_button\" class=\"btn btn-primary\">Reply</button>" // Vestigial code
-		document.querySelector('#email-message').innerHTML = `${current_email_message}`; // set inner html
+		email_body.innerHTML = `${current_email_message}`; // set inner html
 		
-		// Append the button
-		email_body.appendChild(reply_button); // append the button
+		// TODO create an archive button like you created a reply button.
+		// Then create an event listener for it 
+		// should send post request and then dissappear
+		// Then create an unarchive button like you created a reply button.
+		// Then create an event listener for it
+		// Finally put both buttons inside if statements, archive for mailbox and unarchive for archive
+		// should send post request and then dissappear
+
+		if(mailbox == "archive"){
+			// Create an unarchive button
+			var unarchive_button = document.createElement("button"); // create
+			unarchive_button.innerHTML = "Unarchive"; //set label
+			unarchive_button.className = "btn btn-danger"; // for bootstrap CSS
+			unarchive_button.id = "unarchive_button"
+			
+			// Append the button
+			email_body.appendChild(unarchive_button); // append the button
+
+			// Create an event listener for the reply button
+			unarchive_button.addEventListener ("click", function() {
+				console.log("You clicked the unarchive button!"); // for debugging
+				// compose_reply_email(from, subject, message, timestamp)
+			});
+		}
+
+		if(mailbox == "inbox"){
+			// Create a reply button
+			var reply_button = document.createElement("button"); // create
+			reply_button.innerHTML = "Reply"; // set label
+			reply_button.className = "btn btn-primary"; // for bootstrap CSS
+			reply_button.id = "reply_button"; // give it an id in case I want to do something with it in the future
 		
-		// Create an event listener for the reply button
-		reply_button.addEventListener ("click", function() {
-			// console.log("You clicked the reply button!"); // for debugging
-			compose_reply_email(from, subject, message, timestamp)
-		  });
+			// Append the button
+			email_body.appendChild(reply_button); // append the button
+			
+			// Create an event listener for the reply button
+			reply_button.addEventListener ("click", function() {
+				// console.log("You clicked the reply button!"); // for debugging
+				compose_reply_email(from, subject, message, timestamp)
+			});
+
+			// Create an archive button
+			var archive_button = document.createElement("button"); // create
+			archive_button.innerHTML = "Archive"; // set label
+			archive_button.className = "btn btn-danger"; // for bootstrap CSS
+			archive_button.id = "archive_button"; // give it an id in case I want to do something with it in the future
+
+			// Append the button
+			// email_body.appendChild(document.createElement("br"));
+			email_body.appendChild(archive_button); // append the button
+
+			// Create an event listener for the archive button
+			archive_button.addEventListener ("click", function() {
+				console.log("You clicked the archive button!"); // for debugging
+				// do something here
+			});
+		}
 	});
 }
 

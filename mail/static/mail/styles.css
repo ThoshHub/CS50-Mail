@@ -28,3 +28,7 @@ textarea {
 #to_line {
 	color: blue
   }
+
+#reply_button {
+	margin: 10px;
+}
