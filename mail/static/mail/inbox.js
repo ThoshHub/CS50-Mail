@@ -222,8 +222,11 @@ function display_email(email_id, mailbox){
 					})
 				  })
 
-				// TODO add redirect to inbox
-				
+				// add redirect to inbox
+				setTimeout(function (){ // Wait 10 ms before sending to sent mailbox to allow time for database to update
+					load_mailbox('inbox')
+				  }, 10);
+
 				// Remove the archive button
 				// unarchive_button.remove();
 
@@ -273,7 +276,10 @@ function display_email(email_id, mailbox){
 					})
 				  })
 
-				// TODO Redirect to inbox
+				// Redirect to inbox
+				setTimeout(function (){ // Wait 10 ms before sending to sent mailbox to allow time for database to update
+					load_mailbox('inbox')
+				  }, 10);
 
 				// Remove the archive button
 				// archive_button.remove();
