@@ -210,7 +210,19 @@ function display_email(email_id, mailbox){
 			// Create an event listener for the reply button
 			unarchive_button.addEventListener ("click", function() {
 				console.log("You clicked the unarchive button!"); // for debugging
-				// compose_reply_email(from, subject, message, timestamp)
+				
+				// Unarchive the email via fetch
+				fetch('/emails/' + email_id, {
+					method: 'PUT',
+					body: JSON.stringify({
+						archived: false
+					})
+				  })
+
+				// Remove the archive button
+				unarchive_button.remove();
+
+				// TODO Display user feedback "This Email has been Archived"
 			});
 		}
 
@@ -243,7 +255,19 @@ function display_email(email_id, mailbox){
 			// Create an event listener for the archive button
 			archive_button.addEventListener ("click", function() {
 				console.log("You clicked the archive button!"); // for debugging
-				// do something here
+				
+				// Archive the email via fetch
+				fetch('/emails/' + email_id, {
+					method: 'PUT',
+					body: JSON.stringify({
+						archived: true
+					})
+				  })
+
+				// Remove the archive button
+				archive_button.remove();
+
+				// TODO Display user feedback "This Email has been Archived"
 			});
 		}
 	});
