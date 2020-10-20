@@ -52,21 +52,21 @@ TODOs:
 /		- basically the opposite of the inbox where it only displays emails with archived flag
 
 - View Email View
-	- If archived, there needs to be an unarchive button ONLY
-		- I think the way to do this is to pass in the mailbox variable
-		- If mailbox == 'inbox' provide archive button
-			- once clicked it sends the post (put?) request to the backend
-			- Button dissapears? (or turns into unarchive button)
-				- Try dissapears first 
-				- If you have enough time then change it to unarchive 
-		- If mailbox == 'archive' provide unarchive button
-			- once clicked it sends the post (put?) request to the backend
-			- Button dissapears? (or turns into archive button)
-				- Try dissapears first 
-				- If you have enough time then change it to archive
-	- If sent, make sure no buttons
-	- If unarchived, then make sure there is a reply button AND and an archive button
+/	- If archived, there needs to be an unarchive button ONLY
+/		- I think the way to do this is to pass in the mailbox variable
+/		- If mailbox == 'inbox' provide archive button
+/			- once clicked it sends the post (put?) request to the backend
+/			- Button dissapears? (or turns into unarchive button)
+/				- Try dissapears first 
+/				- If you have enough time then change it to unarchive 
+/		- If mailbox == 'archive' provide unarchive button
+/			- once clicked it sends the post (put?) request to the backend
+/			- Button dissapears? (or turns into archive button)
+/				- Try dissapears first 
+/				- If you have enough time then change it to archive
+/	- If sent, make sure no buttons
+/	- If unarchived, then make sure there is a reply button AND and an archive button
 /		- Need to add a button to reply 
-		- Need to add a button to archive
+/		- Need to add a button to archive
 
 /- Need to make sure that once emails are read in the inbox, that they get marked as read
