@@ -209,7 +209,7 @@ function display_email(email_id, mailbox){
 
 			// Create an event listener for the reply button
 			unarchive_button.addEventListener ("click", function() {
-				console.log("You clicked the unarchive button!"); // for debugging
+				// console.log("You clicked the unarchive button!"); // for debugging
 				
 				// Unarchive the email via fetch
 				fetch('/emails/' + email_id, {
@@ -222,7 +222,11 @@ function display_email(email_id, mailbox){
 				// Remove the archive button
 				unarchive_button.remove();
 
-				// TODO Display user feedback "This Email has been Archived"
+				// Display user feedback that the email has been Unarchived
+				var unarchive_message = document.createElement('p');
+				unarchive_message.innerHTML = "This email has been unarchived!";
+				unarchive_message.className = "badge badge-secondary";
+				email_body.appendChild(unarchive_message);
 			});
 		}
 
@@ -250,11 +254,11 @@ function display_email(email_id, mailbox){
 
 			// Append the button
 			// email_body.appendChild(document.createElement("br"));
-			email_body.appendChild(archive_button); // append the button
+			email_body.appendChild(archive_button); // append the buttons
 
 			// Create an event listener for the archive button
 			archive_button.addEventListener ("click", function() {
-				console.log("You clicked the archive button!"); // for debugging
+				// console.log("You clicked the archive button!"); // for debugging
 				
 				// Archive the email via fetch
 				fetch('/emails/' + email_id, {
@@ -267,7 +271,11 @@ function display_email(email_id, mailbox){
 				// Remove the archive button
 				archive_button.remove();
 
-				// TODO Display user feedback "This Email has been Archived"
+				// Display user feedback that the email has been Archived
+				var archive_message = document.createElement('p');
+				archive_message.innerHTML = "This email has been archived!";
+				archive_message.className = "badge badge-secondary";
+				email_body.appendChild(archive_message);
 			});
 		}
 	});
