@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	const subject = document.querySelector('#compose-subject').value;
 	const body = document.querySelector('#compose-body').value;
 	send_email(recipients, subject, body)
-	load_mailbox('sent')
+	setTimeout(function (){ // Wait 10 ms before sending to sent mailbox to allow time for database to update
+		load_mailbox('sent')
+	  }, 10);
+	
 	console.log("Sending Email:\nRecipients: " + recipients + "\nSubject: \t" + subject + "\nBody: \t\t" + body)
 	
 	// TODO the mailbox needs to go the sent after, but atm it redirects to inbox
