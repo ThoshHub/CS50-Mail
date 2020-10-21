@@ -188,7 +188,7 @@ function display_email(email_id, mailbox){
 		current_email_message = current_email_message + "<h6>To: <span id=\"to_line\">" + recipients + "</span></h6>";
 		current_email_message = current_email_message + "<h6 id=\"time_line\">Time: " + timestamp + "</h6>";
 		current_email_message = current_email_message + "<h6>Message: " + "</h6>";
-		current_email_message = current_email_message + "<p>" + message + "</p>";
+		current_email_message = current_email_message + "<p>" + message.replace(/(?:\r\n|\r|\n)/g, '<br>') + "</p>";
 		// current_email_message = current_email_message + "<button id=\"reply_button\" class=\"btn btn-primary\">Reply</button>" // Vestigial code
 		email_body.innerHTML = `${current_email_message}`; // set inner html
 		
